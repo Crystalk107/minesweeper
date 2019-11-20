@@ -32,3 +32,12 @@ table {
     background-color: rgb(189, 186, 186);
   }
 
+  .timer {
+display: inline-block;
+padding: 5%;
+background-color: red;
+width: 10%;
+height: 5%;
+text-align: center;
+border: groove;
+  }

@@ -3,8 +3,9 @@ var MINE = "X";
 var FLAG = "F";
 
 var gStartTime = 0;
-var gEndTime = 0;
-var gTotalTime = (gStartTime/1000) - (gEndTime/1000);
+var gTotalTime = 0;
+var gGameLost = false;
+
 
 
 var gBoard = [];
@@ -13,7 +14,7 @@ var gGame = {
     isOn: false,
     shownCount: 0,
     markedCount: 0,
-    secsPassed: 0
+    secsPassed: gTotalTime
 }
 
 
@@ -22,10 +23,13 @@ function cellRightClicked(event, posI, posJ) {
     if (event.which === 3) {
         var elCell = document.querySelector('[data-i="' + posI + '"][data-j="' + posJ + '"]');
         setFlag(elCell, posI, posJ);
+        
     }
+   
 }
 
 function setFlag(elCell, posI, posJ) {
+    if (gGameLost === true) return;
     elCell.classList.toggle('flagged');
     if (elCell.innerText === FLAG) {
         gGame.markedCount--
@@ -34,14 +38,16 @@ function setFlag(elCell, posI, posJ) {
     else {
         elCell.innerText = FLAG;
         gGame.markedCount++;
-    }
+    }  isGameWon(); // check for winning conditions in case of flagging aka. right clicking
 
-}
+} 
 
 
-function startCount() {
+function startTimer() {
     gGame.isOn = true;
-    gStartTime = new Date().getTime();
+    gTotalTime++;
+    gGame.secsPassed = gTotalTime;
+    document.querySelector('.timerSeconds').innerText = gTotalTime;
 }
 
 function initGame() {
@@ -115,18 +121,26 @@ function createMines(board) {
 
 
 function cellLeftClicked(elCell, posI, posJ) {
+    
+ 
+    if (gGameLost === true) return;
+
+    if (gStartTime === 0) gStartTime = setInterval(startTimer, 1000);
 
     if (elCell.innerText === FLAG) return;
 
-    if (gBoard[posI][posJ].isMine === true) clickedMine();
+    if (gBoard[posI][posJ].isMine === true) {
+        clickedMine();
+        isGameLose(); 
+        gGameLost = true;// mine is clicked, it's a lose.
+    }
 
     if (gBoard[posI][posJ].minesAroundCount > 0) clickedCounter(elCell, posI, posJ);
 
     if (gBoard[posI][posJ].minesAroundCount === 0 && gBoard[posI][posJ].isMine === false) revealBlock(posI, posJ);
 
-
-
-    checkGameOver();
+    isGameWon(); // check for winning conditions left clicking
+        
 
 
 
@@ -159,7 +173,7 @@ function isShown(posI, posJ) {
     var element = document.querySelector('[data-i="' + posI + '"][data-j="' + posJ + '"]');
     element.classList.add('shown');
     gGame.shownCount = document.querySelectorAll('.shown').length;
-    console.log(gGame.shownCount);
+   
 
 }
 
@@ -168,7 +182,7 @@ function clickedMine() {
     for (var i = 0; mine.length > i; i++) {
         mine[i].innerText = MINE;
     }
-    isGameLose();
+
 
 }
 
@@ -208,24 +222,22 @@ function generateMineCounter(board) {
 
 
 
-function cellMarked(elCell) {
-
-}
-
-function checkGameOver() {
-    if (gGame.shownCount + gLevel.mines === gLevel.size ** 2) isGameWon(); // add flag condition
-}
-
 function isGameWon() {
-
+    if (gGame.shownCount + gLevel.mines === gLevel.size ** 2 && gGame.markedCount === gLevel.mines) {
+    gGame.isOn = false;
+    clearInterval(gStartTime);
     console.log('Victory!');
+
+    }
 
 }
 
 function isGameLose() {
     gGame.isOn = false;
+    clearInterval(gStartTime);
+    console.log('YOU LOST');
 
-}
+} 
 
 function expandShown(board, elCell, i, j) {
 
