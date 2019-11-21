@@ -103,6 +103,7 @@ function startTimer() {
 function cellRightClicked(event, posI, posJ) {
     if (event.which === 3) {
         var elCell = document.querySelector('[data-i="' + posI + '"][data-j="' + posJ + '"]');
+        if (gBoard[posI][posJ].isShown === false)
         setFlag(elCell, posI, posJ);
 
     }
@@ -196,8 +197,8 @@ function setShown(posI, posJ) {
 
 function setFlag(elCell, posI, posJ) {
     if (gGameLost === true) return;
-    elCell.classList.toggle('flagged');
     var cell = gBoard[posI][posJ];
+     elCell.classList.toggle('flagged');
     if (cell.isMarked === true) {
         cell.isMarked = false;
         gGame.markedCount--
@@ -317,3 +318,4 @@ function isGameLose() {
     }
 
 }
+
