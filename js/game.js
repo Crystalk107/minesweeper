@@ -300,8 +300,6 @@ function isGameWon() {
         clearInterval(gStartTime);
         gGame.markedCount = 0;
         document.querySelector('.smiley').innerHTML = WIN_SMILEY;
-        console.log('Victory!');
-
     }
 
 }
