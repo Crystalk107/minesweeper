@@ -50,6 +50,7 @@ function showMineWarning(posI, posJ) {
 
     var element = document.querySelector('[data-i="' + posI + '"][data-j="' + posJ + '"]');
     element.classList.add('hint');
+    gBoard[posI][posJ].isShown = true;
     element.innerHTML = MINE;
 }
 
@@ -57,6 +58,7 @@ function hideMineWarning(posI, posJ) {
 
     var element = document.querySelector('[data-i="' + posI + '"][data-j="' + posJ + '"]');
     element.classList.remove('hint');
+    gBoard[posI][posJ].isShown = false;
     if (gGame.isOn === true)
     element.innerHTML = '';
 }
