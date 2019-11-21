@@ -1,43 +1,169 @@
 body {
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,53,121,1) 50%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(90deg, rgba(212,169,213,1) 0%, rgba(216,175,235,1) 9%, rgba(121,9,117,1) 89%, rgba(213,0,255,1) 100%);
     text-align: center;
 }
 
 table {
     
-    border: 5px groove rgb(99, 93, 93);
+  margin-left:auto; 
+  margin-right:auto;
+    border: 0.5rem groove rgb(105, 15, 105);
     table-layout: fixed;
-    width: 200px;
-    height:50px
+    width: 10rem;
+    height:5rem
+    
 
   }
   
   th, td {
-    border: 3px groove rgb(218, 206, 206);
-    width: 70px;
-    height: 70px;
+    border: 3px groove rgb(188, 82, 197);
+    width: 2rem;
+    height: 2rem;
     table-layout: fixed;
     overflow: hidden;
-    background-color: grey;
+    background-color: rgb(180, 60, 178);
+    display: table-cell;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(97, 13, 97);
     
 
   }
 
   .shown {
-    border: 3px groove rgb(218, 206, 206);
-    width: 70px;
-    height: 70px;
+    border: 3px groove rgb(217, 206, 218);
+    width: 2rem;
+    height: 2rem;
     table-layout: fixed;
     overflow: hidden;
-    background-color: rgb(189, 186, 186);
+    background-color: rgb(209, 124, 188);
   }
 
-  .timer {
-display: inline-block;
-padding: 5%;
-background-color: red;
-width: 10%;
-height: 5%;
+  .hint {
+    border: 3px groove rgb(217, 206, 218);
+    width: 2rem;
+    height: 2rem;
+    table-layout: fixed;
+    overflow: hidden;
+    background-color:  rgb(209, 124, 188);
+  }
+
+  .menu {
+ display: inline-block;
+ padding: 0.5rem;
+background-color: rgb(201, 55, 152);
+width: 10rem;
+height: 12.5rem;
 text-align: center;
 border: groove;
+border-radius: 3rem;
+border-width: 0.5rem;
+border-color: rgb(107, 14, 72);
+color: rgb(78, 5, 66);
+margin-top: 2rem;
   }
+
+.popup {
+  display: none;
+  position: absolute;
+  margin-left: 10rem; 
+  margin-right:auto;
+  box-sizing: fixed;
+  height: 4rem;
+  width: 6rem;
+  background-color: pink;
+  font-family: cursive;
+  padding: 1rem;
+  border-style: dashed;
+  border-color: purple;
+  border-width: 0.5rem;
+  border-radius: 3rem;
+  font-size: 1rem;
+  color: rgb(192, 85, 151);
+    
+  }
+
+  .hintButton {
+padding: 0.5rem;
+background-color: rgb(201, 55, 152);
+width: 5rem;
+max-width: 5rem;
+height: 2.5rem;
+text-align: center;
+border: groove;
+border-radius: 3rem;
+border-width: 0.1rem;
+border-color: rgb(107, 14, 72);
+color: rgb(236, 148, 222);
+display: block;
+margin-bottom: 0.5rem;
+margin-left: auto;
+margin-right: auto;
+text-decoration: double;
+font-family: cursive;
+}
+  .smiley {
+   font-size: 2rem;
+   border-radius: 0.5rem;
+   padding: 0.5rem;
+   background-color: rgb(184, 106, 184);
+   border-color: rgb(92, 26, 92);
+   display: inline-block;
+  }
+
+  .diffButton {
+    padding: 0.5rem;
+    background-color: rgb(201, 55, 152);
+    width: 5rem;
+    height: 2.5rem;
+    text-align: center;
+    border: groove;
+    border-radius: 3rem;
+    border-width: 0.1rem;
+    border-color: rgb(107, 14, 72);
+    color: rgb(236, 148, 222);
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    text-decoration: double;
+font-family: cursive;
+      }
+
+      .subHeadline{
+        color: purple;
+        font-family: fantasy;
+        margin: 0.5rem;
+        display: inline-block;
+        -webkit-text-stroke-width: 0.1rem;
+        -webkit-text-fill-color: rgb(230, 145, 238);
+        text-decoration: underline;
+        font-size: 1.5rem;
+      }
+
+      .timerSeconds {
+        color: purple;
+        font-family: fantasy;
+        display: inline-block;
+        -webkit-text-stroke-width: 0.1rem;
+        -webkit-text-fill-color: rgb(230, 145, 238);
+        font-size: 1.5rem;
+      }
+        .flags {
+          color: purple;
+          font-family: fantasy;
+          display: inline-block;
+          -webkit-text-stroke-width: 0.1rem;
+          -webkit-text-fill-color: rgb(230, 145, 238);
+          font-size: 1.5rem;
+        }
+          .lives {
+            color: purple;
+            font-family: fantasy;
+            display: inline-block;
+            -webkit-text-stroke-width: 0.1rem;
+            -webkit-text-fill-color: rgb(230, 145, 238);
+            font-size: 1.5rem;
+  
+      }

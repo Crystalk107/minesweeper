@@ -1,15 +1,41 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/game.css">
     <title>Minesweeper</title>
 </head>
-<body onload="initGame()" oncontextmenu="return false;">
-    <div class="timer">Timer: <div class="timerSeconds">0</div></div>
-    <table></table>
 
-    
-<script src="js/game.js"></script>
-<script src="js/utils.js"></script>
+<body onload="initGame()" oncontextmenu="return false;">
+    <div class="popup">You can now click safely!</div>
+    <div><img src="img/logo.png"></div>
+    <div class="menu">
+        <div><span class="subHeadline" style="text-decoration: none">Timer : </span><span class="timerSeconds">0</span></div>
+        <div><span class="subHeadline" style="text-decoration: none">Flags : </span><span class="flags">0</span></div>
+        <div><span class="subHeadline" style="text-decoration: none">Lives : </span><span class="lives">0</span></div>
+        <div><button class="smiley" onclick="initGame()">&#128578;</button></div>
+    </div>
+    <p>
+        <table></table>
+    </p>
+   
+    <div><span class="subHeadline">Take a Hint:</span>
+        <div><button class="hintButton"  onclick="enterHintMode(this)">Hint 1</button></div>
+        <div> <button class="hintButton" onclick="enterHintMode(this)">Hint 2</button></div>
+        <div> <button class="hintButton" onclick="enterHintMode(this)">Hint 3</button></div>
+    </div>
+
+    <div ><span class="subHeadline">Choose Difficulity:</span>
+        <div><button class="diffButton" onclick="setLevelChosen(0)">Easy</button></div>
+        <div><button class="diffButton" onclick="setLevelChosen(1)">Medium</button></div>
+        <div><button class="diffButton" onclick="setLevelChosen(2)">Hard</button></div>
+    </div>
+
+
+
+    <script src="js/game.js"></script>
+    <script src="js/mines.js"></script>
+    <script src="js/utils.js"></script>
 </body>
+
 </html>
