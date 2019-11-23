@@ -25,6 +25,7 @@ var gGame = {
 }
 
 function initGame() {
+    gGame.markedCount = 0;
     document.querySelector('.flags').innerHTML = gGame.markedCount;
     document.querySelector('div.popup').style.display = "none";
     var hints = document.querySelectorAll('.hintButton');
